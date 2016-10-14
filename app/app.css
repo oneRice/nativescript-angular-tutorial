@@ -1,19 +1,11 @@
-﻿button, label, stack-layout {
-    horizontal-align: center;    
+﻿@import url("~/platform.css");
+
+Page {
+  background-color: white;
+  font-size: 15;
 }
 
-button {
-    font-size: 36;
+TextField {
+  padding: 10;
+  font-size: 13;
 }
-
-.title {
-    font-size: 30;
-    margin: 20;
-}
-
-.message {
-    font-size: 20;
-    color: #284848;
-    text-align: center;
-    margin: 0 20;
-} 

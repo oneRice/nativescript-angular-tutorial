@@ -1,5 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+
+import { Page } from "ui/page";
 
 import { User } from "../../shared/user/user";
 import { UserService } from "../../shared/user/user.service";
@@ -11,17 +13,23 @@ import { UserService } from "../../shared/user/user.service";
     providers: [UserService]
 })
 
-export class LoginComponent {
+export class LoginComponent implements OnInit {
     user: User;
     isLogged = true;
 
     constructor(
         private userService: UserService,
-        private router: Router
+        private router: Router,
+        private page: Page
     ) {
         this.user = new User();
         this.user.email = "user@nativescript.org";
         this.user.password = "password";
+    }
+
+    ngOnInit() {
+        this.page.actionBarHidden = true;
+        this.page.backgroundImage = "res://bg_login";
     }
 
     submit() {

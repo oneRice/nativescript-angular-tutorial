@@ -1,9 +1,8 @@
 StackLayout {
   margin-left: 30;
   margin-right: 30;
-  padding: 15;
+  padding-bottom: 15;
   background-color: white;
-  vertical-align: center;
 }
 
 Image {

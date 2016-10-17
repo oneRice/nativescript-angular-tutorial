@@ -14,8 +14,11 @@ import { GroceryListService } from "../../shared/grocery/grocery-list.service";
 
 export class ListComponent implements OnInit {
     groceryList:Array<Object> = [];
-
     grocery = "";
+
+    isLoading = false;
+    listLoaded = false;
+
     @ViewChild("groceryTextField") groceryTextField: ElementRef;
 
     constructor(private groceryListService: GroceryListService) {
@@ -23,11 +26,14 @@ export class ListComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.isLoading = true;
         this.groceryListService.load()
             .subscribe(loadedGroceries => {
                 loadedGroceries.forEach((groceryObject) => {
                     this.groceryList.unshift(groceryObject);
                 });
+                this.isLoading = false;
+                this.listLoaded = true;
             });
     }
 

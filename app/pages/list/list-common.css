@@ -1,0 +1,13 @@
+ListView {
+  opacity: 0;
+}
+
+.visible {
+  animation-name: show;
+  animation-duration: 1s;
+}
+
+@keyframes show {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

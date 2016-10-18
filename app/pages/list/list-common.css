@@ -11,3 +11,11 @@ ListView {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+.delete-container {
+  background-color: black;
+  padding: 5;
+  height: 20;
+  width: 20;
+  margin-right: 8;
+}

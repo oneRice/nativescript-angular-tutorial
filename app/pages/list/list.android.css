@@ -13,3 +13,7 @@
 TextField {
   color: white;
 }
+
+ActionBar {
+  padding-top: 10;
+}

@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import {Component, ElementRef, OnInit, ViewChild, NgZone } from "@angular/core";
 
 import * as SocialShare from "nativescript-social-share";
 
@@ -23,7 +23,8 @@ export class ListComponent implements OnInit {
 
     @ViewChild("groceryTextField") groceryTextField: ElementRef;
 
-    constructor(private groceryListService: GroceryListService) {
+    constructor(private groceryListService: GroceryListService,
+                private zone: NgZone) {
 
     }
 
@@ -66,6 +67,28 @@ export class ListComponent implements OnInit {
                 }
             )
         
+    }
+
+    delete(item: Grocery) {
+        this.groceryListService.delete(item.id)
+            .subscribe(
+                //success
+                () => {
+                    this.zone.run(
+                        () => {
+                            let index = this.groceryList.indexOf(item);
+                            this.groceryList.splice(index, 1);
+                        }
+                    )
+                },
+                //error
+                () => {
+                    alert({
+                        message: "An error occurred while deleting this item.",
+                        okButtonText: "OK"
+                    });
+                }
+            )
     }
 
     share() {
